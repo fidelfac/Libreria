@@ -1,0 +1,82 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+group = 'com.github.fidelfac.libreria' // Change this to match your package name
+version = '1.0.1' // Change this to match your version number
+
+def siteUrl = 'https://github.com/fidelfac/Libreria'      // Homepage URL of the library
+def gitUrl = 'https://github.com/fidelfac/Libreria.git'   // Git repository URL
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 23
+        versionCode 1
+        versionName version
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.0.1'
+}
+
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task generateJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task generateJavaDocsJar(type: Jar) {
+    classifier = 'javadoc'
+    from generateJavadocs.destinationDir
+}
+
+generateJavaDocsJar.dependsOn generateJavadocs
+
+artifacts {
+    archives generateJavaDocsJar
+    archives generateSourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    pkg {
+        repo = "maven"
+        name = "com.github.fidelfac.libreriaintroduccion"
+
+        version {
+            name = '1.0.1-intro'
+            desc = 'My test upload'
+            released  = new Date()
+            vcsTag = '1.0.1'
+        }
+
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+    configurations = ['archives']
+}

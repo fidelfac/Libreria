@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IntroComponente">
+        <attr name="imagenlogo" format="reference"/>
+        <attr name="texto" format="string"/>
+        <attr name="fondocolor" format="color"/>
+        <attr name="fondoimagen" format="reference"/>
+        <attr name="fondo" format="reference"/>
+        <attr name="textotamanio" format="dimension"/>
+        <attr name="textocolor" format="color"/>
+    </declare-styleable>
+</resources>

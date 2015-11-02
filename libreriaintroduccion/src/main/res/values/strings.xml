@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LibreriaIntroduccion</string>
+    <string name="texto">Texto prueba</string>
+    <string name="imagen">Imagen</string>
+</resources>
