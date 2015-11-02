@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".MainActivity"
+    xmlns:intro="http://schemas.android.com/apk/res-auto"
+
+    >
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="jlkfjldfdkalfkjaldffdfdfdfd"-->
+        <!--android:textColor="@color/colorPrimary"-->
+        <!--android:textSize="50sp"-->
+        <!--/>-->
+
+    <com.github.fidelfac.libreriaintroduccion.Introduccion1
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view"
+        intro:texto="hola a todos"
+        intro:imagenlogo="@android:drawable/ic_btn_speak_now"
+        intro:fondo="@color/colorAccent"
+        intro:textotamanio="10dp"
+        intro:textocolor="@color/colorPrimary"
+        />
+
+</RelativeLayout>
